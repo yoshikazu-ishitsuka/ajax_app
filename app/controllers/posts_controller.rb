@@ -7,20 +7,21 @@ class PostsController < ApplicationController
 #  end
 
   def create
-  Post.create(content: params[:content])
-  redirect_to action: :index
+    Post.create(content: params[:content])
+    redirect_to action: :index
   end
 
-  def checded
-    post = Post.find(params[;id])
-    if post.checded
-      post.update(checded: false)
+  def checked
+    # binding.pry
+    post = Post.find(params[:id])
+    if post.checked then
+      post.update(checked: false)
     else
-      post.update(checded: true)
+      post.update(checked: true)
     end
 
     item = Post.find(params[:id])
-    render json: { post: item}
+    render json: { post: item }
   end
 
 end
